@@ -1,0 +1,9 @@
+<h3>List of found Recipes</h3>
+
+<div class="container">
+    {% for resp in llm_response %}
+    <ul>
+        <li>{{ resp }}</li>
+    </ul>
+    {% endfor %}
+</div>

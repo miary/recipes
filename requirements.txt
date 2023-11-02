@@ -1,0 +1,8 @@
+python-dotenv==1.0.0
+django_bootstrap5==23.3
+django-crispy-forms==2.1
+crispy_bootstrap5==0.7
+Django==4.2.6
+psycopg2-binary==2.9.9
+openai==0.28.1
+langchain==0.0.321

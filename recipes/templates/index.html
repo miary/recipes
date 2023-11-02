@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recipes/css/main.css' %}">
+
+    {% load django_bootstrap5 %}
+
+    {% bootstrap_css %}
+
+    {% bootstrap_javascript %}
+
+    {% bootstrap_messages %}
+    <title>Ingredients - African Recipes</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row  pt-4 pb-4">
+            {% include "navmenu.html" %}
+        </div>
+
+        <div class="row">
+            {% include 'ingredients.html' %}
+        </div>
+
+        <div class="row  pt-4 pb-4">
+            {% include 'footer.html' %}
+        </div>
+    </div>
+
+</body>
+</html>

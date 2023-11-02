@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="title">African Recipes</div>
+        <div class="box" id="chatbot-conversation">
+            <div class="item right">
+                <div class="msg">
+                    <p>How I can help you?</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="chatbot-form">{% csrf_token %}
+            <div class="typing-area">
+                <div class="input-field">
+                    <input type="text" id="chatbot-input" placeholder="Ask Suggestions About African Recipes" required>
+                    <button type="submit">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<!-- JavaScript code to handle user input and send it to the backend -->
+<script>
+    const chatbotForm = document.getElementById('chatbot-form');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotMessages = document.getElementById('chatbot-conversation');
+
+    chatbotForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Get the message from the input field
+        const message = chatbotInput.value;
+        // create sender message element
+
+        // Add the message to the chatbot messages
+        chatbotMessages.innerHTML += `<div class="item"><div class="icon"><i class="fa fa-user"></i></div><div class="msg"><p> ${message} </p></div>`;
+        chatbotMessages.innerHTML += `<div class="item right " id="chat-typing"><div class="chat-bubble msg"><div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>`;
+        chatbotInput.setAttribute("disabled", "");
+
+        // Clear the input field
+        chatbotInput.value = '';
+        window.scrollTo(0, document.body.scrollHeight);
+
+        // Send the message to the chatbot and get a response
+        getChatbotResponse(message)
+            .then((response) => {
+                // Add the chatbot's response to the chatbot messages
+                document.getElementById("chat-typing").remove();
+                chatbotMessages.innerHTML += `<div class="item right"><div class="msg"><pre>${response} <br> </pre></div></div>`;
+                chatbotInput.removeAttribute("disabled");
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+    });
+
+    async function getChatbotResponse(message) {
+        var csrftoken = "{{ csrf_token | escapejs }}"
+
+        try {
+            // Send the message to the chatbot using the fetch function
+            const response = await fetch("docschat/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ message: message }),
+            });
+
+            // Return the response from the chatbot
+            return await response.text();
+        } catch (e) {
+            console.error(e);
+            return "An error occurred while processing your request.";
+        }
+    }
+
+</script>
