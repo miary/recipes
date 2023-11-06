@@ -10,9 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'E45Fhgj*91@bnNG=cldztbc4jg&xl0!x673!*v2_=p$$eu)=7*f#d0#zs$44xx-h^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+X_FRAME_OPTIONS = '*'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
