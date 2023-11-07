@@ -17,11 +17,26 @@ class IngredForm(forms.Form):
     main = forms.MultipleChoiceField(
         choices=(
             ("brown beans", "Brown beans"),
+            ("Iru","Iru"),
             ("sorghum","Sorghum"),
             ("black-eyed peas","Black-eyed peas"),
             ("yams","Yams"),
+            ("Okra","Okra"),
             ("millet","Millet"),
             ("fonio","Fonio"),
+        ),
+        widget=forms.CheckboxSelectMultiple,
+    )
+    
+    leaf = forms.MultipleChoiceField(
+        choices=(
+            ("Bitter leaf","Bitter leaf"),
+            ("Zobo leaf","Zobo leaf"),
+            ("Pumplin leaf","Pumplin leaf"),
+            ("Moringa leaf","Moringa leaf"),
+            ("Uziza leaf","Uziza leaf"),
+            ("Mitoo slender leaf","Mitoo slender leaf")
+            
         ),
         widget=forms.CheckboxSelectMultiple,
     )
@@ -30,8 +45,9 @@ class IngredForm(forms.Form):
         choices=(
             ("chicken","Chicken"),
             ("goat","Goat"),
-            ("beef","Beef"),
+            ("beef","Cow meat"),
             ("lamb","Lamb"),
+            ("Guinea fowl","Guinea fowl")
         ),
         widget=forms.RadioSelect,
     )
