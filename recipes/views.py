@@ -21,7 +21,6 @@ def index(request):
 
 # Use data from form to query recipes through LLM
 def query_recipes(staple, main, leaves, meat, request):
-    leaves = ""
 
     prompt = (f"You are a chef who is an expert in African cuisine and knowlegable about African recipes.\n" 
         f"List in a bullet point form at list three African recipes that must contain the following ingredients:\n" 
@@ -31,7 +30,7 @@ def query_recipes(staple, main, leaves, meat, request):
         f"Be thorough and make sure that the recipes contain all the necessary ingredients as well as the " 
         f"detailed steps and necessary preparation before starting the cooking.\n" 
         f"Whenever possible provide also information about cooking time.\n"
-        f"Format and outputyour response as a python list")
+        f"Format and output your response as a list")
     try:
         completion = openai.ChatCompletion.create(
             model=llm_model,
@@ -40,10 +39,8 @@ def query_recipes(staple, main, leaves, meat, request):
             max_tokens=3000,
         )
     except openai.APIError as e:
-        # Handle API errors here
         return "An error occurred while processing Openai API request: {}".format(e)
 
-    # Get the response text from the ChatGPT API
     message = completion.choices[0].message.content
     #messages.success(request, 'Recipes successfully retrieved.')
 
