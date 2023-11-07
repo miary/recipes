@@ -26,9 +26,9 @@ class IngredForm(forms.Form):
             ("fonio","Fonio"),
         ),
         widget=forms.CheckboxSelectMultiple,
-    )
+    ),
     
-    leaf = forms.MultipleChoiceField(
+    leaves = forms.MultipleChoiceField(
         choices=(
             ("Bitter leaf","Bitter leaf"),
             ("Zobo leaf","Zobo leaf"),
@@ -39,7 +39,7 @@ class IngredForm(forms.Form):
             
         ),
         widget=forms.CheckboxSelectMultiple,
-    )
+    ),
     
     meat = forms.MultipleChoiceField(
         choices=(
@@ -62,6 +62,7 @@ class IngredForm(forms.Form):
             Fieldset(
                 'Recipe Ingredients',
                 Div('staple', css_class='custom-class'),
+                Div('leaves', css_class='custom-class'),
                 Div('main', css_class='custom-class'),
                 Div('meat', css_class='custom-class'),
             ),
