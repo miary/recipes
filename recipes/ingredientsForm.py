@@ -26,7 +26,7 @@ class IngredForm(forms.Form):
             ("fonio","Fonio"),
         ),
         widget=forms.CheckboxSelectMultiple,
-    ),
+    )
     
     leaves = forms.MultipleChoiceField(
         choices=(
@@ -39,7 +39,7 @@ class IngredForm(forms.Form):
             
         ),
         widget=forms.CheckboxSelectMultiple,
-    ),
+    )
     
     meat = forms.MultipleChoiceField(
         choices=(
